@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BinBuddy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      .hidden {
+        display: none;
+      }
+      .fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="flex items-center justify-center h-screen bg-[#259E73] text-white"
+  >
+    <!-- Splash Screen -->
+    <div
+      id="splash"
+      class="absolute inset-0 flex items-center justify-center bg-[#259E73] text-3xl font-bold"
+    >
+      BinBuddy
+    </div>
+
+    <!-- Welcome Screen -->
+    <div id="welcome" class="hidden text-center fade-in">
+      <h1 class="text-3xl font-bold">Welcome Back!</h1>
+      <button
+        onclick="showLogin()"
+        class="mt-4 px-6 py-2 bg-white text-[#259E73] rounded-lg"
+      >
+        Sign In
+      </button>
+      <p class="mt-2">
+        Don't have an account?
+        <a href="#" onclick="showSignup()" class="underline">Create here</a>
+      </p>
+    </div>
+
+    <!-- Login Screen -->
+    <div
+      id="login"
+      class="hidden fade-in text-center w-80 p-6 bg-white text-black rounded-lg"
+    >
+      <h2 class="text-xl font-bold mb-4">Sign In</h2>
+      <p class="mb-2">Continue with:</p>
+      <div class="flex justify-center space-x-4 mb-4">
+        <button
+          class="flex items-center space-x-2 border px-4 py-2 rounded-lg"
+          onclick="redirectToHome()"
+        >
+          <img src="download.png" alt="Google" class="w-5 h-5" />
+          <span>Google</span>
+        </button>
+        <button
+          class="flex items-center space-x-2 border px-4 py-2 rounded-lg"
+          onclick="redirectToHome()"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
+            alt="Facebook"
+            class="w-5 h-5"
+          />
+          <span>Facebook</span>
+        </button>
+      </div>
+      <p class="mb-2">or continue with your existing email:</p>
+      <select id="emailSelect" class="w-full p-2 border rounded mb-2">
+        <option value="">Select Email</option>
+        <option value="john.doe@example.com">john.doe@example.com</option>
+        <option value="jane.smith@example.com">jane.smith@example.com</option>
+        <option value="user123@email.com">user123@email.com</option>
+      </select>
+      <button
+        onclick="checkEmailAndProceed()"
+        class="w-full py-2 bg-[#259E73] text-white rounded"
+      >
+        Continue
+      </button>
+    </div>
+
+    <!-- OTP Verification Screen -->
+    <div
+      id="otp"
+      class="hidden fade-in text-center w-80 p-6 bg-white text-black rounded-lg"
+    >
+      <h2 class="text-xl font-bold mb-4">Almost there</h2>
+      <p class="mb-2">
+        Enter the 6-digit code sent to your email for verification.
+      </p>
+      <div class="flex justify-center space-x-2">
+        <input
+          type="text"
+          maxlength="1"
+          class="w-10 h-10 text-center border rounded"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          class="w-10 h-10 text-center border rounded"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          class="w-10 h-10 text-center border rounded"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          class="w-10 h-10 text-center border rounded"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          class="w-10 h-10 text-center border rounded"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          class="w-10 h-10 text-center border rounded"
+        />
+      </div>
+      <button
+        onclick="redirectToHome()"
+        class="w-full mt-4 py-2 bg-[#259E73] text-white rounded"
+      >
+        Verify</button
+      >
+    </div>
+
+    <!-- Home Screen -->
+    <div
+      id="home"
+      class="hidden fade-in text-center w-80 p-6 bg-white text-black rounded-lg"
+    >
+      <img
+        src="bin.jpg"
+        alt="Multi-Waste Recycling"
+        class="mx-auto w-40 h-40 mb-4"
+      />
+      <h2 class="text-xl font-bold">Let's Minimize Waste</h2>
+      <p class="mb-4">Reusing things in another form</p>
+      <button
+        onclick="startApp()"
+        class="w-full py-2 bg-[#259E73] text-white rounded"
+      >
+        Let's Start
+      </button>
+    </div>
+
+  </body>
+</html>
